@@ -22,24 +22,52 @@ app.post('/login', function (req, res) {
     res.redirect('/channel');
 });
 
-app.get('/channel/:name?', function (req, res) {
-    console.log(req.params.name);
-    if (req.params.name) {
-        channels.join(req.params.name, req.session.username);
-        
-        res.render('story');
-    } else {  
-        res.render('channels', {
-            locals: {
-                channels: channels.list()
-            }
-        });
-    }
+app.get('/channel', function (req, res) {
+    res.render('channels', {
+        locals: {
+            channels: channels.list()
+        }
+    });
 });
 
 app.post('/channel', function (req, res) {
     channels.create(req.body.name);
     res.redirect('/channel');
+});
+
+app.get('/channel/:name?', function (req, res, next) {
+    var channelname = req.params.name;
+    
+    if (channelname) {
+        channels.join(channelname, req.session.username);
+        res.redirect('/channel/' + channelname + '/story');
+    } else {
+        res.send('error 1');
+    }
+});
+
+app.get('/channel/:name?/story', function (req, res, next) {
+    var channelname = req.params.name;
+
+    if (channelname) {
+        res.render('stories', {
+            locals: {
+                channel: channels.list()[channelname]
+            }
+        });
+    } else {
+        res.send('error 3');
+    }
+});
+
+app.post('/channel/:name/story', function (req, res, next) {
+    var channelname = req.params.name;
+    if (channelname) {
+        channels.createStory(channelname, req.body.task, req.body.description);
+        res.redirect('/channel/' + channelname + '/story');
+    } else {
+        res.send('error 2');
+    }
 });
 
 /**
