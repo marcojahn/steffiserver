@@ -32,7 +32,7 @@ app.get('/channel', function (req, res) {
 
 app.post('/channel', function (req, res) {
     channels.create(req.body.name);
-    res.send(channels.list());
+    res.redirect('/channel');
 });
 
 /**

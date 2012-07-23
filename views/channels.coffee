@@ -1,11 +1,15 @@
 h1 'Channels'
 
-table
-for c in channels
-  tr td c.id td c.name
-  
+h2 'Join an existing channel'
+table ->
+  for c of channels
+    tr -> 
+      td -> 
+        c
+
+h2 'Create new channel'
 form action: '/channel', method: 'post', ->
   div class: 'field', ->
     label for: 'name', -> 'Name: '
     input id: 'name', name: 'name'
-    button 'create new channel'
+    button 'create'
