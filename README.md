@@ -1,6 +1,6 @@
 steffiserver
 ============
-Server for scrum poker meetins.
+Server for scrum poker meetings.
 
 Contributing
 ------------
