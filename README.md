@@ -31,3 +31,10 @@ REST interface
 
 Next steps
 ----------
+1. channel creator = story creator
+2. start voting
+3. vote!
+4. collect results and display
+5. revote
+6. close and remove story
+7. close and remove channel

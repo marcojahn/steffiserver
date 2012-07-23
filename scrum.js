@@ -7,12 +7,12 @@ app.set('view engine', 'coffee');
 app.register('.coffee', ck.adapters.express);
 // TODO:https://groups.google.com/group/express-js/browse_thread/thread/e94bcd01cd454c7d/f4ff4f37a111a1ea
 app.set("view options", { layout: false });
-    
+
 app.use(express.logger());
 app.use(express.bodyParser());
 app.use(express.cookieParser());
 app.use(express.session({secret: 'steffi'}));
-    
+
 app.get('/', function (req, res) {
     res.render('index');
 });
