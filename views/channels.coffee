@@ -2,10 +2,11 @@ h1 'Channels'
 
 h2 'Join an existing channel'
 table ->
-  for c of channels
+  for name of channels
     tr -> 
-      td -> 
-        c
+      td -> name
+      td -> a href: '/channel/' + name, -> 'join'
+        
 
 h2 'Create new channel'
 form action: '/channel', method: 'post', ->

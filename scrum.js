@@ -22,12 +22,19 @@ app.post('/login', function (req, res) {
     res.redirect('/channel');
 });
 
-app.get('/channel', function (req, res) {
-    res.render('channels', {
-        locals: {
-            channels: channels.list()
-        }
-    });
+app.get('/channel/:name?', function (req, res) {
+    console.log(req.params.name);
+    if (req.params.name) {
+        channels.join(req.params.name, req.session.username);
+        
+        res.render('story');
+    } else {  
+        res.render('channels', {
+            locals: {
+                channels: channels.list()
+            }
+        });
+    }
 });
 
 app.post('/channel', function (req, res) {
@@ -40,7 +47,7 @@ app.post('/channel', function (req, res) {
  * /login     POST[username]        connect session id with username
  * /channel   GET                   list of channels
  * /channel   POST[name]            create channel
- * /channel   GET[id]               join channel
+ * /channel   GET[name]             join channel
  * /logout    GET                   leave all channels
  *
  * /channel/n/story                   POST                create story
