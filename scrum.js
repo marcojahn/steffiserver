@@ -70,17 +70,4 @@ app.post('/channel/:name/story', function (req, res, next) {
     }
 });
 
-/**
- * /          GET                   enter username
- * /login     POST[username]        connect session id with username
- * /channel   GET                   list of channels
- * /channel   POST[name]            create channel
- * /channel   GET[name]             join channel
- * /logout    GET                   leave all channels
- *
- * /channel/n/story                   POST                create story
- * /channel/n/story/m/storypoints     PUT                 poker story
- * /channel/n/story/m                 GET                 read results
- */
-
 app.listen(8080);
