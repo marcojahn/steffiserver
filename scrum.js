@@ -9,24 +9,25 @@ app.set("view options", { layout: false });
     
 app.use(express.logger());
 app.use(express.bodyParser());
+app.use(express.cookieParser());
+app.use(express.session({secret: 'steffi'}));
     
 app.get('/', function (req, res) {
-  res.render('index');
+    res.render('index');
 });
 
 app.post('/login', function (req, res) {
-  console.log(req.body);
-  res.send(req.body);
+    req.session.username = req.body.username;
+    res.redirect('/channel');
 });
 
 app.get('/channel', function (req, res) {
-  res.send('test');
-
+    res.send(req.session.username);
 });
 
 /**
  * /          GET                   enter username
- * /login      POST[username]        connect session id with username
+ * /login     POST[username]        connect session id with username
  * /channel   GET                   list of channels
  * /channel   POST[name]            create channel
  * /channel   GET[id]               join channel
