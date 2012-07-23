@@ -1,7 +1,7 @@
 var ck = require('coffeekup'),
     express = require('express'),
-    app = express.createServer(),
-    channels = {};
+    channels = require('./channels'),
+    app = express.createServer();
 
 app.set('view engine', 'coffee');
 app.register('.coffee', ck.adapters.express);
@@ -25,9 +25,14 @@ app.post('/login', function (req, res) {
 app.get('/channel', function (req, res) {
     res.render('channels', {
         locals: {
-            channels: channels
+            channels: channels.list()
         }
     });
+});
+
+app.post('/channel', function (req, res) {
+    channels.create(req.body.name);
+    res.send(channels.list());
 });
 
 /**
