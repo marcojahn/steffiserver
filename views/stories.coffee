@@ -1,11 +1,13 @@
 h1 'Stories'
 
-h2 'Pick a story'
+h2 'Poker a story'
 table ->
   for story in channel.stories
     tr ->
       td -> story.task
       td -> story.description
+      td -> input id: 'points', name: 'points', size: 2
+      td -> button 'submit'
 
 h2 'Create new story'
 form action: '/channel/' + channel.name + '/story', method: 'post', ->
