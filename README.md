@@ -13,9 +13,6 @@ Contributing
 To install a specific version use npm install <npm-module>@<version>
 e.g.: npm install express@2.5.11
 
-For Windows:
-Copy `node_modules` folder from nodejs to project folder.
-
 
 REST interface
 --------------
@@ -27,10 +24,10 @@ REST interface
     /channel/<name>   GET                   join channel
     /logout           GET                   leave all channels
  
-    /channel/<name>/story                        GET                 list stories of channel
-    /channel/<name>/story                        POST                create story
-    /channel/<name>/story/<task>/storypoints     PUT                 poker story
-    /channel/<name>/story/<task>                 GET                 read results
+    /channel/<name>/story                       GET                       list stories of channel
+    /channel/<name>/story                       POST[task,description]    create story
+    /channel/<name>/story/<task>/storypoints    PUT                       poker story
+    /channel/<name>/story/<task>                GET                       read results
 
 
 Next steps
