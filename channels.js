@@ -1,5 +1,5 @@
-var stories = require('./stories.js');
-var channels = {};
+var stories = require('./stories.js'),
+    channels = {};
 
 Channel = function (name) {
     this.name = name;
