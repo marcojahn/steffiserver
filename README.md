@@ -8,6 +8,7 @@ Contributing
 2. Install express    (2.5.11)
 3. Install connect    (1.9.2)
 4. Install coffeekup  (0.3.1)
+5. Install socket.io  (0.9.8)
 
 To install a specific version use npm install <npm-module>@<version>
 e.g.: npm install express@2.5.11

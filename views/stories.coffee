@@ -4,6 +4,7 @@ html ->
     title "Scrum"
   link rel: "stylesheet", type: "text/css", href: "./statics/styles/base.css"
   script type: "text/javascript", src: "./statics/scripts/base.js"
+  script type: "text/javascript", src: "./statics/scripts/socket.io.min.js"
   body ->
 
     h1 'Stories'
