@@ -1,3 +1,6 @@
+/**
+ * Copyright (C) 2012 Marco Jahn and Remko Plantenga
+ */
 var ck = require('coffeekup'),
     express = require('express'),
     channels = require('./channels'),
