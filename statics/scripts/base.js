@@ -1,0 +1,2 @@
+// introducing namespace
+var SCRUM = {};
