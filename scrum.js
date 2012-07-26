@@ -68,11 +68,33 @@ app.get('/channel/:name?/story', function (req, res, next) {
 
 app.post('/channel/:name/story', function (req, res, next) {
     var channelname = req.params.name;
+    
     if (channelname) {
         channels.createStory(channelname, req.body.task, req.body.description);
         res.redirect('/channel/' + channelname + '/story');
     } else {
         res.send('error 2');
+    }
+});
+
+app.put('/channel/:name/story/:id/:points', function (req, res, next) {
+    var voteResult,
+        channelname = req.params.name,
+        storyid = req.params.id,
+        points = req.params.points;
+    
+    console.log('voting to channel {'+channelname+'}, story {'+storyid+'} with points {'+points+'}');
+    if (channelname) {
+        voteResult = channels.vote(channelname, storyid, points, req.session.username);
+        
+        if (voteResult) {
+            res.redirect('/channel/' + channelname + '/story');
+            console.log(channels);
+        } else {
+            res.send('error while voting');
+        }
+    } else {
+        res.send('error 4');
     }
 });
 

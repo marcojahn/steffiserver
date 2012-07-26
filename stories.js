@@ -1,6 +1,7 @@
 var stories = {};
 
-Story = function (task, description) {
+Story = function (id, task, description) {
+    this.id = id;
     this.task = task;
     this.description = description;
     this.votes = {};
@@ -11,6 +12,6 @@ Story.prototype.vote = function (username, vote) {
 
 //
 
-exports.create = function (task, description) {
-    return new Story(task, description);
+exports.create = function (id, task, description) {
+    return new Story(id, task, description);
 };

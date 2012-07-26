@@ -39,3 +39,7 @@ Next steps
 5. revote
 6. close and remove story
 7. close and remove channel
+
+?. auto close off channels
+?. auto logout session
+?. show a list of users in channel
