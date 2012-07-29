@@ -1,27 +1,26 @@
-// introducing namespace
+/**
+ * Copyright (C) 2012 Marco Jahn and Remko Plantenga
+ */
 var SCRUM = {};
     
-SCRUM.vote = function (id) {
-    var points = document.getElementById('points_' + id).value
-    alert('voted story id {' + id + '} with points {' + points + '}');
+SCRUM.vote = function (channel, storyid) {
+    var points = document.getElementById('points_' + storyid).value
+    alert('voted story id {' + storyid + '} with points {' + points + '}');
     
     // TODO READ channel name from somewhere
     var req = snack.request({
       method: 'put',
       now: false, // don't send upon creation
-      url: '/channel/test/story/' + id + '/' + points
+      url: '/channel/' + channel +'/story/' + storyid + '/' + points,
+      emulation: false
     }, function (err, res){
-      if (err){
+      if (err) {
         console.log(err);
-        return
       }
+      if (res) {
+        debugger;
+      }
+    });
 
-    })
-
-
-
-      // send the request
-      req.send();
-    console.log('request sent');
-
+    req.send();
 };

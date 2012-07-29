@@ -17,7 +17,7 @@ html ->
           td -> story.task
           td -> story.description
           td -> input id: 'points_' + story.id, name: 'points', size: 2
-          td -> button 'submit', onclick: "SCRUM.vote("+story.id+")"
+          td -> button onclick: 'SCRUM.vote(\'' + channel.name + '\', ' + story.id + ')', 'vote'
 
     h2 'Create new story'
     form action: '/channel/' + channel.name + '/story', method: 'post', ->

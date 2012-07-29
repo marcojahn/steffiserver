@@ -1,3 +1,6 @@
+/**
+ * Copyright (C) 2012 Marco Jahn and Remko Plantenga
+ */
 var stories = require('./stories.js'),
     channels = {};
 
@@ -13,20 +16,17 @@ Channel.prototype.getName = function () {
     return this.name;
 };
 Channel.prototype.createStory = function (task, description) {
-    var id = new Date().getTime();
-    id = 1; // for developing
-    var story = stories.create(id, task, description);
-    this.stories.push(story);
+    this.stories.push(stories.create(task, description));
 };
 Channel.prototype.vote = function (id, points, username) {
-    var voted = false;
-    console.log(this.stories);
+    var i, l, 
+        voted = false;
     
-    for (var i = 0, iLen = this.stories.length; i < iLen; i++) {
-        if (this.stories[i].id === id) {
-            this.stories[i].vote(username, vote);
+    for (i = 0, l = this.stories.length; i < l; i++) {
+        if (this.stories[i].id == id) {
+            this.stories[i].vote(points, username);
             voted = true;
-            // story found, break loop
+            break;
         }
     }
     
@@ -56,7 +56,6 @@ exports.listStories = function (name) {
 };
 
 exports.vote = function (name, id, points, username) {
-    console.log("channel object {'+name+'}");
     console.log(channels[name]);
     return channels[name].vote(id, points, username);
 }

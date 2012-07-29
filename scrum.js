@@ -88,13 +88,12 @@ app.put('/channel/:name/story/:id/:points', function (req, res, next) {
         voteResult = channels.vote(channelname, storyid, points, req.session.username);
         
         if (voteResult) {
-            res.redirect('/channel/' + channelname + '/story');
-            console.log(channels);
+            res.send('ok');
         } else {
-            res.send('error while voting');
+            res.send('error 4');
         }
     } else {
-        res.send('error 4');
+        res.send('error 5');
     }
 });
 
