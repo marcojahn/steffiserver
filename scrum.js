@@ -16,6 +16,7 @@ app.use('/statics/styles', express.static(__dirname + '/statics/styles'));
 
 app.use(express.logger());
 app.use(express.bodyParser());
+app.use(express.methodOverride());
 app.use(express.cookieParser());
 app.use(express.session({secret: 'steffi'}));
 
@@ -41,7 +42,7 @@ app.post('/channel', function (req, res) {
     res.redirect('/channel');
 });
 
-app.get('/channel/:name?', function (req, res, next) {
+app.get('/channel/:name?', function (req, res) {
     var channelname = req.params.name;
     
     if (channelname) {
@@ -52,7 +53,7 @@ app.get('/channel/:name?', function (req, res, next) {
     }
 });
 
-app.get('/channel/:name?/story', function (req, res, next) {
+app.get('/channel/:name?/story', function (req, res) {
     var channelname = req.params.name;
 
     if (channelname) {
@@ -66,7 +67,7 @@ app.get('/channel/:name?/story', function (req, res, next) {
     }
 });
 
-app.post('/channel/:name/story', function (req, res, next) {
+app.post('/channel/:name/story', function (req, res) {
     var channelname = req.params.name;
     
     if (channelname) {
@@ -77,18 +78,18 @@ app.post('/channel/:name/story', function (req, res, next) {
     }
 });
 
-app.put('/channel/:name/story/:id/:points', function (req, res, next) {
+app.put('/channel/:name/story/:id', function (req, res) {
     var voteResult,
         channelname = req.params.name,
         storyid = req.params.id,
-        points = req.params.points;
+        points = req.body.points;
     
     console.log('voting to channel {'+channelname+'}, story {'+storyid+'} with points {'+points+'}');
     if (channelname) {
         voteResult = channels.vote(channelname, storyid, points, req.session.username);
         
         if (voteResult) {
-            res.send('ok');
+            res.redirect('/channel/' + channelname + '/story');
         } else {
             res.send('error 4');
         }
