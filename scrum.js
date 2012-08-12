@@ -78,6 +78,14 @@ app.post('/channel/:name/story', function (req, res) {
     }
 });
 
+app.get('/channel/:name/story/:id', function (req, res) {
+    var channelname = req.params.name,
+        storyid = req.params.id;
+
+    var votes = channels.listVotes(channelname, storyid);
+    res.send(votes);
+});
+
 app.put('/channel/:name/story/:id', function (req, res) {
     var voteResult,
         channelname = req.params.name,

@@ -21,6 +21,25 @@ vows.describe('Channels').addBatch({
         
         'cannot be joined if not created before': function () {
             assert.throws(function () { channels.join('notcreated', 'testuser'); }, TypeError);
+        },
+        
+        'and work with a story': {
+            topic: function () {
+                var story = channels.createStory('test', 'storyTask', 'storyDescription');
+                return story.id;
+            },
+            
+            'allows to vote': function (storyId) {
+                assert.isTrue(channels.vote('test', storyId, 4, 'testuser'));
+                assert.isTrue(channels.vote('test', storyId, 8, 'testuser2'));
+                assert.isTrue(channels.vote('test', storyId, 6, 'testuser3'));
+            },
+            'can list all votes': function (storyId) {
+                var votes = channels.listVotes('test', storyId);
+                assert.equal(4, votes.testuser);
+                assert.equal(8, votes.testuser2);
+                assert.equal(6, votes.testuser3);
+            }
         }
     }
 }).export(module);

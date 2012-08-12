@@ -25,6 +25,9 @@ Story = function (id, task, description) {
 Story.prototype.vote = function (vote, username) {
     this.votes[username] = vote;
 };
+Story.prototype.listVotes = function () {
+    return this.votes;
+}
 
 //
 
