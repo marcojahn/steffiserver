@@ -83,10 +83,10 @@ app.get('/channel/:name/story/:id', function (req, res) {
         storyid = req.params.id;
 
     res.render('votes', {
-		locals: {
-			votes: channels.listVotes(channelname, storyid)
-		}
-	});
+        locals: {
+            votes: channels.listVotes(channelname, storyid)
+        }
+    });
 });
 
 app.put('/channel/:name/story/:id', function (req, res) {

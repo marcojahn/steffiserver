@@ -39,16 +39,16 @@ Channel.prototype.vote = function (id, points, username) {
 };
 Channel.prototype.listVotes = function (id) {
     var votes, user,
-		story = this.getStoryById(id);
+        story = this.getStoryById(id);
 
     if (story) {
         votes = story.listVotes();
-		for (user in this.users) {
-			if (!votes[user]) {
-				return;
-			}
-		}
-		return votes;
+        for (user in this.users) {
+            if (!votes[user]) {
+                return;
+            }
+        }
+        return votes;
     }
 }
 

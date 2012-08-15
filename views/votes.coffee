@@ -9,9 +9,9 @@ html ->
   body ->
 
     h1 'Votes'
-	
-	  for name, points of votes
-	    table ->
-	      tr ->
+    
+      for name, points of votes
+        table ->
+          tr ->
             td -> name
             td -> points

@@ -32,24 +32,24 @@ vows.describe('Channels').addBatch({
             'allows to vote if joined': function (storyId) {
                 assert.isTrue(channels.vote('test', storyId, 4, 'testuser'));
             },
-			'denies vote if not joined': function (storyId) {
-				assert.isFalse(channels.vote('test', storyId, 8, 'testuser2'));
-				channels.join('test', 'testuser2');
+            'denies vote if not joined': function (storyId) {
+                assert.isFalse(channels.vote('test', storyId, 8, 'testuser2'));
+                channels.join('test', 'testuser2');
                 assert.isTrue(channels.vote('test', storyId, 8, 'testuser2'));
-			},
+            },
             'can list all votes': function (storyId) {
                 var votes = channels.listVotes('test', storyId);
                 assert.equal(votes.testuser, 4);
                 assert.equal(votes.testuser2, 8);
             },
-			'only list votes if all users have voted': function (storyId) {
-				var votes;
-				channels.join('test', 'testuser3');
-				votes = channels.listVotes('test', storyId);
-				assert.isUndefined(votes);
-				channels.vote('test', storyId, 6, 'testuser3')
-				votes = channels.listVotes('test', storyId);				
-			}
+            'only list votes if all users have voted': function (storyId) {
+                var votes;
+                channels.join('test', 'testuser3');
+                votes = channels.listVotes('test', storyId);
+                assert.isUndefined(votes);
+                channels.vote('test', storyId, 6, 'testuser3')
+                votes = channels.listVotes('test', storyId);				
+            }
         }
     }
 }).export(module);
