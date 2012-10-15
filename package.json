@@ -1,0 +1,24 @@
+{
+    "name": "steffiserver",
+    "description": "Server for scrum poker meetings.",
+    "author": {
+        "name": "Marco Jahn"
+    },
+    "contributors": [
+        {
+            "name": "Remko Plantenga"
+        }
+    ],
+    "scripts": {
+        "test": "vows --spec"
+    },
+    "dependencies": {
+        "express": "2.5.11",
+        "connect": "1.9.2",
+        "coffeekup": "0.3.1",
+        "socket.io": "0.9.8"
+    },
+    "devDependencies": {
+        "vows"    :  "0.6.3"
+    }
+}
