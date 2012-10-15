@@ -6,11 +6,11 @@ var stories = require('./stories.js'),
 
 Channel = function (name) {
     this.name = name;
-    this.users = [];
+    this.users = {};
     this.stories = [];
 };
 Channel.prototype.join = function (username) {
-    this.users.push(username);
+    this.users[username] = username;
 };
 Channel.prototype.getName = function () {
     return this.name;
@@ -30,7 +30,7 @@ Channel.prototype.getStoryById = function (id) {
     }
 }
 Channel.prototype.vote = function (id, points, username) {
-    var story = this.getStoryById(id);
+    var story = this.users[username] ? this.getStoryById(id) : false;
     
     if (story) {
         story.vote(points, username);
@@ -38,10 +38,17 @@ Channel.prototype.vote = function (id, points, username) {
     return !!story;
 };
 Channel.prototype.listVotes = function (id) {
-    var story = this.getStoryById(id);
+    var votes, user,
+        story = this.getStoryById(id);
 
     if (story) {
-        return story.listVotes();
+        votes = story.listVotes();
+        for (user in this.users) {
+            if (!votes[user]) {
+                return;
+            }
+        }
+        return votes;
     }
 }
 

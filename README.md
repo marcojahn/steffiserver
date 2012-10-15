@@ -4,14 +4,19 @@ Server for scrum poker meetings.
 
 Contributing
 ------------
-1. Install node.js    (0.8.1)
-2. Install express    (2.5.11)
-3. Install connect    (1.9.2)
-4. Install coffeekup  (0.3.1)
-5. Install socket.io  (0.9.8)
+1. Install node.js (0.8.1)
+2. Install express (2.5.11)
+3. Install connect (1.9.2)
+4. Install coffeekup (0.3.1)
+5. Install socket.io (0.9.8)
 
-To install a specific version use npm install <npm-module>@<version>
-e.g.: npm install express@2.5.11
+For running the tests:
+
+1. Install vows (0.6.3)
+
+To install a specific version use npm install <npm-module>@<version> e.g.: 
+
+    npm install express@2.5.11
 
 
 REST interface
@@ -26,8 +31,8 @@ REST interface
  
     /channel/<name>/story                       GET                       list stories of channel
     /channel/<name>/story                       POST[task,description]    create story
-    /channel/<name>/story/<task>/storypoints    PUT                       poker story
-    /channel/<name>/story/<task>                GET                       read results
+    /channel/<name>/story/<id>                  PUT[points]               poker story
+    /channel/<name>/story/<id>                  GET                       read results
 
 
 Next steps
@@ -40,6 +45,6 @@ Next steps
 6. close and remove story
 7. close and remove channel
 
-?. auto close off channels
-?. auto logout session
-?. show a list of users in channel
+- auto close off channels?
+- auto logout session?
+- show a list of users in channel?
