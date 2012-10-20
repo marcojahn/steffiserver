@@ -14,11 +14,13 @@ For running the tests:
 
 1. vows (0.6.3)
 
-to install, use npm:
+Contributing
+------------
+to install, use:
 
     npm install
     
-to run tests, use npm:
+to run tests, use:
 
     npm test
     
