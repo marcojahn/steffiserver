@@ -1,6 +1,7 @@
 {
     "name": "steffiserver",
     "description": "Server for scrum poker meetings.",
+    "version": "0.0.1",
     "author": {
         "name": "Marco Jahn"
     },
@@ -10,7 +11,7 @@
         }
     ],
     "scripts": {
-        "test": "vows --spec"
+        "test": "vows --spec tests/channels.js"
     },
     "dependencies": {
         "express": "2.5.11",
@@ -20,5 +21,9 @@
     },
     "devDependencies": {
         "vows"    :  "0.6.3"
+    },
+    "engines": {
+        "node": "0.8.6",
+        "npm": "1.1.36"
     }
 }

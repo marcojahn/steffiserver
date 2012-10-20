@@ -2,21 +2,26 @@ steffiserver
 ============
 Server for scrum poker meetings.
 
-Contributing
+Requirements
 ------------
-1. Install node.js (0.8.1)
-2. Install express (2.5.11)
-3. Install connect (1.9.2)
-4. Install coffeekup (0.3.1)
-5. Install socket.io (0.9.8)
+1. node.js (0.8.1)
+2. express (2.5.11)
+3. connect (1.9.2)
+4. coffeekup (0.3.1)
+5. socket.io (0.9.8)
 
 For running the tests:
 
-1. Install vows (0.6.3)
+1. vows (0.6.3)
 
-To install a specific version use npm install <npm-module>@<version> e.g.: 
+to install, use npm:
 
-    npm install express@2.5.11
+    npm install
+    
+to run tests, use npm:
+
+    npm test
+    
 
 
 REST interface
