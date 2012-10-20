@@ -10,8 +10,8 @@ html ->
 
     h1 'Votes'
     
-      for name, points of votes
-        table ->
-          tr ->
-            td -> name
-            td -> points
+    for name, points of votes
+      table ->
+        tr ->
+          td -> name
+          td -> points

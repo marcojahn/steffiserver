@@ -1,15 +1,14 @@
 /**
  * Copyright (C) 2012 Marco Jahn and Remko Plantenga
  */
-var ck = require('coffeekup'),
+var http = require('http'),
     express = require('express'),
     channels = require('./channels'),
-    app = express.createServer();
+    app = express();
 
 app.set('view engine', 'coffee');
-app.register('.coffee', ck.adapters.express);
+app.engine('coffee', require('coffeecup').__express);
 // TODO:https://groups.google.com/group/express-js/browse_thread/thread/e94bcd01cd454c7d/f4ff4f37a111a1ea
-app.set("view options", { layout: false });
 
 app.use('/statics/scripts', express.static(__dirname + '/statics/scripts'));
 app.use('/statics/styles', express.static(__dirname + '/statics/styles'));
@@ -17,8 +16,8 @@ app.use('/statics/styles', express.static(__dirname + '/statics/styles'));
 app.use(express.logger());
 app.use(express.bodyParser());
 app.use(express.methodOverride());
-app.use(express.cookieParser());
-app.use(express.session({secret: 'steffi'}));
+app.use(express.cookieParser('steffi'));
+app.use(express.session());
 
 app.get('/', function (req, res) {
     res.render('index');
@@ -109,4 +108,4 @@ app.put('/channel/:name/story/:id', function (req, res) {
     }
 });
 
-app.listen(8080);
+http.createServer(app).listen(8080);

@@ -14,13 +14,13 @@
         "test": "vows --spec tests/channels.js"
     },
     "dependencies": {
-        "express": "2.5.11",
+        "express": "3.x",
         "connect": "1.9.2",
-        "coffeekup": "0.3.1",
+        "coffeecup": "0.3.x",
         "socket.io": "0.9.8"
     },
     "devDependencies": {
-        "vows"    :  "0.6.3"
+        "vows":  "0.6.3"
     },
     "engines": {
         "node": "0.8.6",
