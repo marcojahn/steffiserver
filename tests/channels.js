@@ -48,7 +48,10 @@ vows.describe('Channels').addBatch({
                 votes = channels.listVotes('test', storyId);
                 assert.isUndefined(votes);
                 channels.vote('test', storyId, 6, 'testuser3')
-                votes = channels.listVotes('test', storyId);				
+                votes = channels.listVotes('test', storyId);
+                assert.equal(votes.testuser, 4);
+                assert.equal(votes.testuser2, 8);
+                assert.equal(votes.testuser3, 6);
             }
         }
     }
