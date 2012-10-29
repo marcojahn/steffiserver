@@ -11,7 +11,7 @@
         }
     ],
     "scripts": {
-        "test": "vows --spec tests/channels.js"
+        "test": "vows --spec tests/stories.js tests/channels.js"
     },
     "dependencies": {
         "express": "3.x",
