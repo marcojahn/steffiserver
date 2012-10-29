@@ -1,6 +1,7 @@
 steffiserver
 ============
 Server for scrum poker meetings.
+[![Build Status](https://secure.travis-ci.org/marcojahn/steffiserver.png)](https://secure.travis-ci.org/marcojahn/steffiserver)
 
 Requirements
 ------------
