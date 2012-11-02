@@ -5,15 +5,14 @@ Server for scrum poker meetings.
 
 Requirements
 ------------
-1. node.js (0.8.1)
-2. express (3.x)
-3. connect (1.9.2)
-4. coffeecup (0.3.x)
-5. socket.io (0.9.8)
+1. node.js (0.8.x)
+2. express (3.0.x)
+3. coffeecup (0.3.x)
+4. socket.io (0.9.x)
 
 For running the tests:
 
-1. vows (0.6.3)
+1. vows (0.6.x)
 
 Contributing
 ------------
